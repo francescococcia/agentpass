@@ -388,6 +388,61 @@ a {
   margin-right: 1.5rem;
 }
 
+.scenario-card {
+  display: flex;
+  width: 100%;
+  min-height: 9.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 1.35rem;
+  border: 1px solid var(--line);
+  background: var(--field);
+  padding: 1rem 1.05rem;
+  text-align: left;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.scenario-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.scenario-go {
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 560;
+}
+
+.stage-pill {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--field);
+  padding: 0.2rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.stage-pill[data-on="true"] {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.stage-pill[data-done="true"] {
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scenario-card:hover:not(:disabled) {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+    transform: translateY(-2px);
+  }
+}
+
 @media (min-width: 768px) {
   .blob {
     filter: blur(80px);

@@ -13,10 +13,8 @@ export default async function CheckoutPage() {
 
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-6 pb-16 sm:px-6 sm:py-10">
-      <h1 className="text-[clamp(2rem,6vw,3rem)]">Try a cart</h1>
-      <p className="muted mt-2 max-w-xl">
-        The agent suggests what to buy. AgentPass checks the rules. You see Approved, Needs your OK, or Stopped — with the reason.
-      </p>
+      <h1 className="text-[clamp(2rem,6vw,3rem)]">Try it</h1>
+      <p className="muted mt-2 max-w-xl">Pick a cart. Watch AgentPass approve it, ask Sara, or stop it.</p>
       <div className="mt-6">
         <Suspense fallback={<p className="muted">Opening…</p>}>
           <Checkout mandate={mandate} spent={spent} />

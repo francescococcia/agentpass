@@ -5,7 +5,15 @@ import { useState } from "react";
 import { gbp, mandateSentence } from "@/components/format";
 import type { Mandate, MandateUpdateResponse } from "@/lib/types";
 
-export function MandatePanel({ mandate, spent }: { mandate: Mandate; spent: number }) {
+export function MandatePanel({
+  mandate,
+  spent,
+  compact = false,
+}: {
+  mandate: Mandate;
+  spent: number;
+  compact?: boolean;
+}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [weeklyBudget, setWeeklyBudget] = useState(String(mandate.weeklyBudget));
@@ -51,9 +59,9 @@ export function MandatePanel({ mandate, spent }: { mandate: Mandate; spent: numb
   }
 
   return (
-    <aside className="glass rounded-3xl p-4 sm:p-5">
-      <p className="leading-relaxed">{mandateSentence(current)}</p>
-      <div className="mt-4">
+    <aside className={`glass rounded-3xl ${compact ? "p-3 sm:p-4" : "p-4 sm:p-5"}`}>
+      <p className={`leading-relaxed ${compact ? "text-sm" : ""}`}>{mandateSentence(current)}</p>
+      <div className={compact ? "mt-3" : "mt-4"}>
         <div className="mb-2 flex justify-between gap-3 text-sm">
           <span className="muted">This week</span>
           <span className="num">
@@ -72,7 +80,12 @@ export function MandatePanel({ mandate, spent }: { mandate: Mandate; spent: numb
         </div>
       </div>
 
-      <button type="button" className="btn btn-ghost mt-4" onClick={() => setOpen((value) => !value)} aria-expanded={open}>
+      <button
+        type="button"
+        className={`btn btn-ghost ${compact ? "mt-3 min-h-10 text-sm" : "mt-4"}`}
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+      >
         {open ? "Cancel" : "Change limits"}
       </button>
 
